@@ -1,0 +1,57 @@
+{
+  "name": "@digitalbazaar/ed25519-util",
+  "version": "0.0.1-0",
+  "description": "A library for utilities related to Ed25519 key pairs.",
+  "homepage": "https://github.com/digitalbazaar/ed25519-util",
+  "main": "lib",
+  "author": {
+    "name": "Digital Bazaar, Inc.",
+    "email": "support@digitalbazaar.com",
+    "url": "https://digitalbazaar.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/digitalbazaar/ed25519-util"
+  },
+  "bugs": {
+    "url": "https://github.com/digitalbazaar/ed25519-util/issues",
+    "email": "support@digitalbazaar.com"
+  },
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "base58-universal": "^1.0.0",
+    "esm": "^3.2.25"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^7.16.0",
+    "eslint-config-digitalbazaar": "^2.6.1",
+    "mocha": "^8.1.0",
+    "nyc": "^15.1.0"
+  },
+  "nyc": {
+    "exclude": [
+      "tests"
+    ],
+    "reporter": [
+      "html",
+      "text-summary"
+    ]
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "keywords": [
+    "Cryptography",
+    "ed25519"
+  ],
+  "scripts": {
+    "test": "npm run test-node",
+    "test-node": "cross-env NODE_ENV=test mocha --preserve-symlinks -r esm -t 10000 tests/**/*.spec.js",
+    "coverage": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text-summary npm run test-node",
+    "coverage-ci": "cross-env NODE_ENV=test nyc --reporter=lcov npm test",
+    "coverage-report": "nyc report",
+    "lint": "eslint ."
+  }
+}
